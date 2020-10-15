@@ -1,1 +1,5 @@
-<p>customers works!</p>
+<div class="customers">
+  <h2>Your Customers:</h2>
+  <button mat-flat-button color="primary" (click)="userAdditionDialog()">Add Customer</button>
+</div>
+<app-customer-list [customers]="customers"></app-customer-list>

@@ -1,0 +1,12 @@
+.customers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 64px;
+}
+
+h2 {
+  margin: 0;
+}

@@ -1,1 +1,40 @@
-<p>customer-details works!</p>
+<h1 mat-dialog-title>Add new user</h1>
+<mat-dialog-content>
+  <p *ngIf="!f.valid && f.touched">Please enter all required fields</p>
+</mat-dialog-content>
+  <form class="add-user-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-form-field class="user-form">
+      <mat-label>User Name</mat-label>
+      <input
+        matInput
+        type="text"
+        maxLength="50"
+        required
+        ngModel
+        name="userName">
+      <mat-hint>name</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="user-form">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="text"
+        maxLength="8"
+        required
+        ngModel
+        name="userPassword">
+      <mat-hint>Max length: 8</mat-hint>
+    </mat-form-field>
+    <mat-radio-group aria-label="Select an option" class="radio-button-container"  *ngFor="let type of types">
+      <mat-radio-button
+        ngDefaultControl
+        [value]="type"
+        class="radio-button"
+        required
+        ngModel
+        name="userType">{{type}}</mat-radio-button>
+    </mat-radio-group>
+    <div class="button-container">
+      <button mat-flat-button color="primary" type="submit" [disabled]="!f.valid" mat-dialog-close>Add</button>
+    </div>
+  </form>

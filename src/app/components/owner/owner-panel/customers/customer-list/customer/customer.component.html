@@ -1,1 +1,13 @@
-<p>customer works!</p>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{customer.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Customer type: {{customer.type}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p> Customer id: {{customer.id}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
