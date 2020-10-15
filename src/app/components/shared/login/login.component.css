@@ -1,0 +1,25 @@
+.login-container {
+  position: relative;
+  background-image: url('../../../../assets/images/iceCreamImg.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+}
+
+.login-card {
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-btn {
+  min-width: 75px;
+}
