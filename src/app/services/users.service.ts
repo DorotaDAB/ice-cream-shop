@@ -15,6 +15,5 @@ export class UsersService {
 
   addUser(newUser): void {
     this.dataBaseService.addUser(newUser);
-    console.log('users');
   }
 }

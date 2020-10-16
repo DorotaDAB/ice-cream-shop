@@ -1,5 +1,8 @@
 <div class="customers">
   <h2>Your Customers:</h2>
-  <button mat-flat-button color="primary" (click)="userAdditionDialog()">Add Customer</button>
+  <div class="button-container">
+    <button mat-flat-button color="primary" class="regular-button" (click)="userAdditionDialog()">Add Customer</button>
+    <button mat-mini-fab color="primary" class="small-button" (click)="userAdditionDialog()"><mat-icon>plus_one</mat-icon></button>
+  </div>
 </div>
 <app-customer-list [customers]="customers"></app-customer-list>

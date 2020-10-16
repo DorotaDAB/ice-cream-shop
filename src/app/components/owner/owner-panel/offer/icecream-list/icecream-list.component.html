@@ -1,1 +1,5 @@
-<p>icecream-list works!</p>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let icecreamType of icecreamTypes">
+    <app-icecream [icecreamType]="icecreamType"></app-icecream>
+  </mat-list-item>
+</mat-list>

@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Add new user</h1>
+<mat-dialog-content>
+  <p *ngIf="!f.valid && f.touched">Please enter new flavour</p>
+</mat-dialog-content>
+  <form class="add-icecream-form">
+  <form class="add-user-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-form-field class="icecream-form">
+      <mat-label>Flavour</mat-label>
+      <input
+        matInput
+        type="text"
+        maxLength="50"
+        required
+        ngModel
+        name="flavour">
+      <mat-hint>flavour</mat-hint>
+    </mat-form-field>
+    <div class="button-container">
+      <button mat-flat-button color="primary" type="submit" [disabled]="!f.valid" mat-dialog-close>Add</button>
+    </div>
+</form>

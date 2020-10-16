@@ -5,3 +5,15 @@
 .mat-expansion-panel {
   width: 90vw;
 }
+
+@media (min-width: 500px) {
+  .mat-expansion-panel {
+    width: 95vw;
+  }
+}
+
+@media (min-width: 760px) {
+  .mat-expansion-panel {
+    width: 97vw;
+  }
+}

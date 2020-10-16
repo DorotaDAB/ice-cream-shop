@@ -1,0 +1,11 @@
+.add-icecream-form {
+  display: flex;
+  flex-direction: column;
+}
+.icecream-form {
+  margin-bottom: 10px;
+}
+
+.button-container {
+  margin-top: 15px;
+}

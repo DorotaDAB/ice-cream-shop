@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IcecreamType } from 'src/app/model/icecreamtype.model';
 
 @Component({
   selector: 'app-icecream',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./icecream.component.css']
 })
 export class IcecreamComponent implements OnInit {
+  @Input() icecreamType: IcecreamType;
+  icecreamTypeSubmit: any;
 
   constructor() { }
 

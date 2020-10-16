@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Unit } from 'src/app/model/unit.model';
 
 @Component({
   selector: 'app-units-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./units-list.component.css']
 })
 export class UnitsListComponent implements OnInit {
+  @Input() units: Unit[] = [];
 
   constructor() { }
 

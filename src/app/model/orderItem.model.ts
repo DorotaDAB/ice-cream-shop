@@ -1,7 +1,7 @@
-import { Icecream } from './icecream.model';
+import { IcecreamType } from './icecreamtype.model';
 import { Unit } from './unit.model';
 
 export interface OrderItem {
-  icecream: Icecream;
+  icecream: IcecreamType;
   units: Unit;
 }

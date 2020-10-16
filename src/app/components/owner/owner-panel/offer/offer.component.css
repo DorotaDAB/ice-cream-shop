@@ -1,0 +1,12 @@
+.offer-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1% 5%;
+  justify-content: flex-start;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
 
 import { OwnerPanelComponent } from './components/owner/owner-panel/owner-panel.component';
 import { CustomerListComponent } from './components/owner/owner-panel/customers/customer-list/customer-list.component';
@@ -38,8 +39,8 @@ import { CustomerOrderComponent } from './components/customer/customer-panel/cus
 import { HeaderComponent } from './components/shared/header/header.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/shared/login/login.component';
-
-
+import { IcecreamDetailsComponent } from './components/owner/owner-panel/offer/icecream-details/icecream-details.component';
+import { UnitDetailsComponent } from './components/owner/owner-panel/offer/unit-details/unit-details.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,8 @@ import { LoginComponent } from './components/shared/login/login.component';
     HeaderComponent,
     PageNotFoundComponent,
     LoginComponent,
+    IcecreamDetailsComponent,
+    UnitDetailsComponent,
   ],
   imports: [
     FormsModule,
@@ -80,7 +83,8 @@ import { LoginComponent } from './components/shared/login/login.component';
     MatFormFieldModule,
     MatRadioModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

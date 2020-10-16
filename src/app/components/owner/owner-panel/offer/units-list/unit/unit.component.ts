@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Unit } from 'src/app/model/unit.model';
 
 @Component({
   selector: 'app-unit',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./unit.component.css']
 })
 export class UnitComponent implements OnInit {
+  @Input() unit: Unit;
 
   constructor() { }
 

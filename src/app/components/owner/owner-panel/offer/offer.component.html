@@ -1,1 +1,15 @@
-<p>offer works!</p>
+<div class="offer-container">
+  <div class="button-container">
+    <h2>Offered Ice cream flavours:</h2>
+    <button mat-flat-button color="primary" class="regular-button" (click)="addIcecreamTypeDialog()">Add</button>
+  </div>
+  <app-icecream-list [icecreamTypes]="icecreamTypes"></app-icecream-list>
+</div>
+<mat-divider></mat-divider>
+<div class="offer-container">
+  <div class="button-container">
+    <h2>Offered Ice cream units:</h2>
+    <button mat-flat-button color="accent" class="regular-button" (click)="addUnitDialog()">Add</button>
+  </div>
+  <app-units-list [units]="units"></app-units-list>
+</div>

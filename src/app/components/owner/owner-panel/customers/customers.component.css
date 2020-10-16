@@ -10,3 +10,29 @@
 h2 {
   margin: 0;
 }
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 120px;
+}
+
+.regular-button {
+  display: none;
+}
+
+.small-button {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 760px) {
+  .regular-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .small-button {
+    display: none;
+  }
+}
