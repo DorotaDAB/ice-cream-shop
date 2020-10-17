@@ -20,11 +20,11 @@ export class CustomerDetailsComponent implements OnInit {
   @Output() userSubmit: EventEmitter<User> = new EventEmitter();
 
   constructor(private dataBaseService: DataBaseService) {
-    this.types = this.dataBaseService.types;
+    this.types = this.dataBaseService.getTypes();
   }
 
   onSubmit(f): void {
-    this.newUser = new User (f.value.userName, f.value.userPassword, f.value.userType);
+    this.newUser = new User (null, f.value.userName, f.value.userPassword, f.value.userType);
     this.userSubmit.emit(this.newUser);
   }
 

@@ -9,10 +9,20 @@ export class User {
   unit?: Unit;
   favoriteIcecream?: [IcecreamType];
 
-  constructor(name: string, password: string, type: string) {
-    this.id = Math.floor(Math.random() * 100000);
+  constructor(id: number, name: string, password: string, type: string) {
+    this.id = id ? id : Math.floor(Math.random() * 100000);
     this.name = name;
     this.password = password;
     this.type = type;
+  }
+}
+
+export class UserDTO {
+  id: number;
+  name: string;
+
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
   }
 }

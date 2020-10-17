@@ -1,33 +1,76 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user.model';
+import { User, UserDTO } from '../model/user.model';
 import { IcecreamType } from '../model/icecreamtype.model';
 import { Unit } from '../model/unit.model';
+import { Order, OrderDTO } from '../model/order.model';
+import { OrderItem } from '../model/orderItem.model';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataBaseService {
-  users: User[] = [
-    new User ('Anna', 'secret', 'owner'),
-    new User ('Zyta', 'secret', 'customer'),
-    new User ('Jan', 'secret', 'customer'),
+  private users: User[] = [
+    new User (1, 'Anna', 'secret', 'owner'),
+    new User (2, 'Zyta', 'secret', 'customer'),
+    new User (3, 'Jan', 'secret', 'customer'),
   ];
 
-  types: string[] = [ 'customer', 'owner'];
+  private types: string[] = [ 'customer', 'owner'];
 
-  icecreamTypes: IcecreamType[] = [
+  private icecreamTypes: IcecreamType[] = [
     new IcecreamType ('vanilla'),
     new IcecreamType ('chocolate'),
   ];
 
-  units: Unit[] = [
+  private units: Unit[] = [
     new Unit ('small', 250),
     new Unit ('medium', 500),
     new Unit ('big', 1000),
   ];
 
+  private orderNumber = 1;
+
+  private orders: Order[] = [
+    new Order ( this.orderNumber++, 1, new Date(),
+                [new OrderItem ( new IcecreamType ('vanilla') , new Unit ('small', 250 ))]),
+    new Order ( this.orderNumber++, 1, new Date(),
+                [new OrderItem ( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
+  ];
+
   constructor() { }
+
+  getUsers(): User[] {
+    return this.users;
+  }
+
+  getUsersDTO(): UserDTO[] {
+    return this.users.map(
+      user => new UserDTO (user.id, user.name)
+    );
+  }
+
+  getUserDTO(userId: number): UserDTO {
+    return this.users
+          .filter(user => userId === user.id)
+          .map(
+            user => new UserDTO (user.id, user.name)
+          )[0];
+  }
+
+  getOrders(): Order[] {
+    return this.orders;
+  }
+
+  getOrderDTO(): OrderDTO[] {
+    return this.orders.map(
+        order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItems)
+      );
+  }
+
+  getTypes(): string[] {
+    return this.types;
+  }
 
   addUser(newUser: User): void {
     this.users.push(newUser);

@@ -8,7 +8,6 @@ import { IcecreamType } from 'src/app/model/icecreamtype.model';
 })
 export class IcecreamComponent implements OnInit {
   @Input() icecreamType: IcecreamType;
-  icecreamTypeSubmit: any;
 
   constructor() { }
 

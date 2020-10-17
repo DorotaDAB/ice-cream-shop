@@ -1,0 +1,34 @@
+.orders {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 64px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 120px;
+}
+
+.mat-expansion-panel {
+  width: 90vw;
+}
+
+@media (min-width: 500px) {
+  .mat-expansion-panel {
+    width: 95vw;
+  }
+}
+
+@media (min-width: 760px) {
+  .mat-expansion-panel {
+    width: 97vw;
+  }
+}

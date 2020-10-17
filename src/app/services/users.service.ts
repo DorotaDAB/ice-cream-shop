@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user.model';
+import { User, UserDTO } from '../model/user.model';
 import { DataBaseService } from './data-base.service';
 
 @Injectable({
@@ -10,10 +10,14 @@ export class UsersService {
   constructor(private dataBaseService: DataBaseService) { }
 
   getCustomers(): User[] {
-    return this.dataBaseService.users.filter((user) => user.type === 'customer');
+    return this.dataBaseService.getUsers().filter((user) => user.type === 'customer');
   }
 
-  addUser(newUser): void {
+  addUser(newUser: User): void {
     this.dataBaseService.addUser(newUser);
+  }
+
+  getUsersDTO(): UserDTO[] {
+    return this.dataBaseService.getUsersDTO();
   }
 }

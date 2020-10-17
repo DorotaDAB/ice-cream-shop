@@ -1,1 +1,7 @@
-<p>order-list works!</p>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let order of orders">
+    <app-order
+      [order]="order">
+    </app-order>
+  </mat-list-item>
+</mat-list>
