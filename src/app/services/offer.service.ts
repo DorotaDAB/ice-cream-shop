@@ -11,11 +11,11 @@ export class OfferService {
   constructor(private dataBaseService: DataBaseService) { }
 
   getIcecreamTypes(): IcecreamType[] {
-    return this.dataBaseService.icecreamTypes;
+    return this.dataBaseService.getIcecreamTypes();
   }
 
   getUnits(): Unit[] {
-    return this.dataBaseService.units;
+    return this.dataBaseService.getUnits();
   }
 
   addIcecreamType(newIcecreamType): void {

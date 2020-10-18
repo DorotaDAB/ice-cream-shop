@@ -1,4 +1,15 @@
 <div class="orders">
   <h2>Orders:</h2>
+  <div class="button-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose Customer</mat-label>
+      <mat-select (valueChange)="selectCustomer($event)">
+        <mat-option>*All Customers*</mat-option>
+        <mat-option *ngFor="let customer of customers" [value]="customer">
+          {{customer.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
-<app-order-list [orders]="orders"></app-order-list>
+<app-order-list [orders]="orders" [selectedCustomer]="selectedCustomer" [selectedCustomerOrders]="selectedCustomerOrders"></app-order-list>

@@ -1,0 +1,29 @@
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.mat-expansion-panel {
+  width: 90vw;
+  margin-bottom: 1%;
+}
+
+.mat-list-base .mat-list-item {
+  font-size: 14px;
+  height: 100%;
+}
+
+h3 {
+  margin: 0 16px;
+}
+
+@media (min-width: 500px) {
+  .mat-expansion-panel {
+    width: 95vw;
+  }
+}
+
+@media (min-width: 760px) {
+  .mat-expansion-panel {
+    width: 97vw;
+  }
+}

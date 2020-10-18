@@ -17,4 +17,8 @@ export class OrdersService {
     return this.dataBaseService.getOrderDTO();
   }
 
+  getOrdersByCustomer(custmerId: number): OrderDTO[] {
+    return this.dataBaseService.getCustomerOrderDTO(custmerId);
+  }
+
 }

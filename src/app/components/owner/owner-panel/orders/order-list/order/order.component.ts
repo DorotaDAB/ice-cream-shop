@@ -11,7 +11,7 @@ import { OrderItem } from 'src/app/model/orderItem.model';
 })
 export class OrderComponent implements OnInit {
   @Input() order: OrderDTO;
-  
+
   items: OrderItem[] = [];
 
   constructor() {

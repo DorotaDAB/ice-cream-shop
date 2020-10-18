@@ -1,0 +1,20 @@
+<mat-list role="list" *ngIf="selectedCustomerOrders">
+  <mat-list-item role="listitem" *ngFor="let order of selectedCustomerOrders" class="order-details-item">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Order number: {{order.orderNumber}}
+          </mat-panel-title>
+          <mat-panel-description>
+            order date: {{order.orderDate | date}}
+          </mat-panel-description>
+          <p>Ordered items:</p>
+        </mat-expansion-panel-header>
+        <mat-list-item role="listitem" *ngFor="let item of order.orderItems" class="order-details-item">
+          {{item.icecreamType.flavour}}: {{item.unit.name}} ({{item.unit.weightInGrams}})
+        </mat-list-item>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-list-item>
+</mat-list>

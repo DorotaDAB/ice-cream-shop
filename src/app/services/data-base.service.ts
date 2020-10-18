@@ -52,10 +52,10 @@ export class DataBaseService {
 
   getUserDTO(userId: number): UserDTO {
     return this.users
-          .filter(user => userId === user.id)
-          .map(
-            user => new UserDTO (user.id, user.name)
-          )[0];
+      .filter(user => userId === user.id)
+      .map(
+        user => new UserDTO (user.id, user.name)
+      )[0];
   }
 
   getOrders(): Order[] {
@@ -68,8 +68,22 @@ export class DataBaseService {
       );
   }
 
+  getCustomerOrderDTO(customerId: number): OrderDTO[] {
+    return this.orders
+      .filter(order => order.userId === customerId)
+      .map(order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItems));
+  }
+
   getTypes(): string[] {
     return this.types;
+  }
+
+  getUnits(): Unit[] {
+    return this.units;
+  }
+
+  getIcecreamTypes(): IcecreamType[] {
+    return this.icecreamTypes;
   }
 
   addUser(newUser: User): void {

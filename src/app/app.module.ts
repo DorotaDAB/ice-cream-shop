@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 import { OwnerPanelComponent } from './components/owner/owner-panel/owner-panel.component';
 import { CustomerListComponent } from './components/owner/owner-panel/customers/customer-list/customer-list.component';
@@ -41,6 +42,7 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 import { LoginComponent } from './components/shared/login/login.component';
 import { IcecreamDetailsComponent } from './components/owner/owner-panel/offer/icecream-details/icecream-details.component';
 import { UnitDetailsComponent } from './components/owner/owner-panel/offer/unit-details/unit-details.component';
+import { CustomerOrderListItemComponent } from './components/owner/owner-panel/orders/order-list/customer-order-list-item/customer-order-list-item.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { UnitDetailsComponent } from './components/owner/owner-panel/offer/unit-
     LoginComponent,
     IcecreamDetailsComponent,
     UnitDetailsComponent,
+    CustomerOrderListItemComponent,
   ],
   imports: [
     FormsModule,
@@ -84,7 +87,8 @@ import { UnitDetailsComponent } from './components/owner/owner-panel/offer/unit-
     MatRadioModule,
     MatInputModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
