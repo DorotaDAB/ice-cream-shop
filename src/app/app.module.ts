@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { OwnerPanelComponent } from './components/owner/owner-panel/owner-panel.component';
 import { CustomerListComponent } from './components/owner/owner-panel/customers/customer-list/customer-list.component';
@@ -43,6 +45,9 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { IcecreamDetailsComponent } from './components/owner/owner-panel/offer/icecream-details/icecream-details.component';
 import { UnitDetailsComponent } from './components/owner/owner-panel/offer/unit-details/unit-details.component';
 import { CustomerOrderListItemComponent } from './components/owner/owner-panel/orders/order-list/customer-order-list-item/customer-order-list-item.component';
+import { OrderSummaryComponent } from './components/owner/owner-panel/orders/order-list/order-summary/order-summary.component';
+import {
+  OrderSummaryItemComponent } from './components/owner/owner-panel/orders/order-list/order-summary-item/order-summary-item.component';
 
 @NgModule({
   declarations: [
@@ -71,9 +76,12 @@ import { CustomerOrderListItemComponent } from './components/owner/owner-panel/o
     IcecreamDetailsComponent,
     UnitDetailsComponent,
     CustomerOrderListItemComponent,
+    OrderSummaryComponent,
+    OrderSummaryItemComponent,
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -88,7 +96,9 @@ import { CustomerOrderListItemComponent } from './components/owner/owner-panel/o
     MatInputModule,
     MatExpansionModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { User, UserDTO } from '../model/user.model';
 import { IcecreamType } from '../model/icecreamtype.model';
 import { Unit } from '../model/unit.model';
-import { Order, OrderDTO } from '../model/order.model';
+import { Order, OrderDTO, OrderItemDailySummaryDTO } from '../model/order.model';
 import { OrderItem } from '../model/orderItem.model';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,10 @@ export class DataBaseService {
                 [new OrderItem ( new IcecreamType ('vanilla') , new Unit ('small', 250 ))]),
     new Order ( this.orderNumber++, 1, new Date(),
                 [new OrderItem ( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
+    new Order ( this.orderNumber++, 2, new Date(),
+                [new OrderItem ( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
+    new Order ( this.orderNumber++, 2, new Date(),
+                [new OrderItem ( new IcecreamType ('chocolate') , new Unit ('large', 1000 ))]),
   ];
 
   constructor() { }
@@ -73,6 +78,18 @@ export class DataBaseService {
       .filter(order => order.userId === customerId)
       .map(order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItems));
   }
+
+  getOrderItemDailySummaryDTO(): OrderItemDailySummaryDTO[] {
+    const initial = this.orders
+      .map(order => order.orderItems)
+      .reduce((x, y) => x.concat(y));
+
+    const groupedOrders: any = _.groupBy(initial, (item) => {
+      return item.icecreamType.flavour + '-' + item.unit.name;
+    });
+    return Object.values(groupedOrders).map(
+      (item: any[]) => new OrderItemDailySummaryDTO(item[0], item.length));
+    }
 
   getTypes(): string[] {
     return this.types;

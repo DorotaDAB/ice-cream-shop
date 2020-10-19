@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Order, OrderDTO } from '../model/order.model';
+import { Order, OrderDTO, OrderItemDailySummaryDTO } from '../model/order.model';
 import { DataBaseService } from './data-base.service';
 
 @Injectable({
@@ -19,6 +19,10 @@ export class OrdersService {
 
   getOrdersByCustomer(custmerId: number): OrderDTO[] {
     return this.dataBaseService.getCustomerOrderDTO(custmerId);
+  }
+
+  getOrdersSummaryByDate(): OrderItemDailySummaryDTO[] {
+    return this.dataBaseService.getOrderItemDailySummaryDTO();
   }
 
 }

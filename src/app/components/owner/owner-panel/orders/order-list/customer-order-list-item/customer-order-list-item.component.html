@@ -9,7 +9,6 @@
           <mat-panel-description>
             order date: {{order.orderDate | date}}
           </mat-panel-description>
-          <p>Ordered items:</p>
         </mat-expansion-panel-header>
         <mat-list-item role="listitem" *ngFor="let item of order.orderItems" class="order-details-item">
           {{item.icecreamType.flavour}}: {{item.unit.name}} ({{item.unit.weightInGrams}})

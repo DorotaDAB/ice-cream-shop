@@ -28,3 +28,13 @@ export class OrderDTO {
     this.orderItems = orderItems;
   }
 }
+
+export class OrderItemDailySummaryDTO {
+  orderItem: OrderItem;
+  orderedQuantityTotal: number;
+
+  constructor(orderItem: OrderItem, orderedQuantityTotal: number) {
+    this.orderItem = orderItem;
+    this.orderedQuantityTotal = orderedQuantityTotal;
+  }
+}

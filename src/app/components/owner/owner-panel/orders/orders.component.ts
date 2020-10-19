@@ -14,18 +14,27 @@ export class OrdersComponent implements OnInit {
   customers: UserDTO[] = [];
   selectedCustomer: UserDTO;
   selectedCustomerOrders: OrderDTO[];
-
-  selectCustomer(value: UserDTO): void {
-    this.selectedCustomer = value;
-    if (value) {
-      this.selectedCustomerOrders = this.ordersService.getOrdersByCustomer(this.selectedCustomer.id);
-    }
-  }
-
+  summaryView = false;
 
   constructor(private ordersService: OrdersService, private userService: UsersService) {
     this.getOrdersByLatest(ordersService);
     this.getCustomers(userService);
+  }
+
+  selectCustomer(value: UserDTO): void {
+    this.selectedCustomer = value;
+    if (value) {
+      this.selectedCustomerOrders = this.ordersService
+        .getOrdersByCustomer(this.selectedCustomer.id)
+        .sort(this.numericComparator);
+    } else {
+      this.selectedCustomer = undefined;
+    }
+  }
+
+  displaySummary(): void {
+    this.summaryView = true;
+    this.selectedCustomer = undefined;
   }
 
   getOrdersByLatest(ordersService: OrdersService): void {
@@ -39,6 +48,10 @@ export class OrdersComponent implements OnInit {
 
   numericComparator(a: OrderDTO, b: OrderDTO): number {
     return b.orderNumber - a.orderNumber;
+  }
+
+  displayCustomerView(): void {
+    this.summaryView = false;
   }
 
   ngOnInit(): void {

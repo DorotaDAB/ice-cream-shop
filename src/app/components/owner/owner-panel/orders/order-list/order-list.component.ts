@@ -12,6 +12,8 @@ export class OrderListComponent implements OnInit {
   @Input() orders: Order[] = [];
   @Input() selectedCustomer: UserDTO;
   @Input() selectedCustomerOrders: OrderDTO[];
+  @Input() selectedDate: Date;
+  @Input() summaryView: boolean;
 
   constructor(private ordersService: OrdersService) {
    }

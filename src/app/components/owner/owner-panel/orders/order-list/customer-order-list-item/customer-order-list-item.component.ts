@@ -16,7 +16,6 @@ export class CustomerOrderListItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.selectedCustomerOrders);
   }
 
 }
