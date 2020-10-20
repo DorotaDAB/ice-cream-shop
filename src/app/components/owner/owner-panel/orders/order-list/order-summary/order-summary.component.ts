@@ -19,14 +19,14 @@ export class OrderSummaryComponent implements OnInit {
 
   selectDate(event: MatDatepickerInputEvent<Date>): void {
     this.selectedDate = event.value;
+    this.getOrdersSummary(this.selectedDate);
   }
 
-  getOrdersSummary(): void {
-    this.filteredOrders = this.ordersService.getOrdersSummaryByDate();
+  getOrdersSummary(selecedDate: Date): void {
+    this.filteredOrders = this.ordersService.getOrdersSummaryByDate(selecedDate);
   }
 
   ngOnInit(): void {
-    this.getOrdersSummary();
   }
 
 }

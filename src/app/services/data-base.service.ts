@@ -79,10 +79,13 @@ export class DataBaseService {
       .map(order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItems));
   }
 
-  getOrderItemDailySummaryDTO(): OrderItemDailySummaryDTO[] {
+  getOrderItemDailySummaryDTO(selectedDate: Date): OrderItemDailySummaryDTO[] {
     const initial = this.orders
+      .filter(order => order.orderDate.getFullYear() === selectedDate.getFullYear()
+        && order.orderDate.getMonth() === selectedDate.getMonth()
+        && order.orderDate.getDay() === selectedDate.getDay())
       .map(order => order.orderItems)
-      .reduce((x, y) => x.concat(y));
+      .reduce((x, y) => x.concat(y), []);
 
     const groupedOrders: any = _.groupBy(initial, (item) => {
       return item.icecreamType.flavour + '-' + item.unit.name;

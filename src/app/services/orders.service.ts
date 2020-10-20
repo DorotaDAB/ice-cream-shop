@@ -21,8 +21,8 @@ export class OrdersService {
     return this.dataBaseService.getCustomerOrderDTO(custmerId);
   }
 
-  getOrdersSummaryByDate(): OrderItemDailySummaryDTO[] {
-    return this.dataBaseService.getOrderItemDailySummaryDTO();
+  getOrdersSummaryByDate(selectedDate: Date): OrderItemDailySummaryDTO[] {
+    return this.dataBaseService.getOrderItemDailySummaryDTO(selectedDate);
   }
 
 }
