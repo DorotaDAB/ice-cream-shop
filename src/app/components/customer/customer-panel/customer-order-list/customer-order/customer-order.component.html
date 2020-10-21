@@ -1,17 +1,17 @@
-<mat-list role="list">
-  <mat-list-item role="listitem" class="order-details-item">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Order date: {{order.orderDate | date}}
-          </mat-panel-title>
-          <mat-panel-description>
-            order number: {{order.orderNumber}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-          {{order.orderItem.icecreamType.flavour}}: {{order.orderItem.unit.name}} ({{order.orderItem.unit.weightInGrams}}) - quantity: {{order.orderItem.quantity}}
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-list-item>
-</mat-list>
+  <mat-list role="list">
+    <mat-list-item role="listitem" class="order-details-item">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Order date: {{order.orderDate | date}}
+            </mat-panel-title>
+            <mat-panel-description>
+              order number: {{order.orderId}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+            {{order.orderItem.icecreamType.flavour}}: {{order.orderItem.unit.name}} ({{order.orderItem.unit.weightInGrams}}) - quantity: {{order.orderItem.quantity}}
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-list-item>
+  </mat-list>

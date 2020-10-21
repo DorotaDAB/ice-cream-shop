@@ -17,8 +17,8 @@ export class UsersService {
     this.dataBaseService.addUser(newUser);
   }
 
-  getUsersDTO(): UserDTO[] {
-    return this.dataBaseService.getUsersDTO();
+  getCustomersDTO(): UserDTO[] {
+    return this.dataBaseService.getCustomersDTO();
   }
 
   getCustomerDTO(userId: number): CustomerDTO {

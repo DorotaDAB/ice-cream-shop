@@ -43,11 +43,11 @@ export class OrdersComponent implements OnInit {
   }
 
   getCustomers(userService: UsersService): void {
-    this.customers = userService.getUsersDTO();
+    this.customers = userService.getCustomersDTO();
   }
 
   numericComparator(a: OrderDTO, b: OrderDTO): number {
-    return b.orderNumber - a.orderNumber;
+    return b.orderId - a.orderId;
   }
 
   displayCustomerView(): void {

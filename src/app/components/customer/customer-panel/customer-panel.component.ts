@@ -60,7 +60,7 @@ export class CustomerPanelComponent implements OnInit {
   }
 
   numericComparator(a: OrderDTO, b: OrderDTO): number {
-    return b.orderNumber - a.orderNumber;
+    return b.orderId - a.orderId;
   }
 
   ngOnInit(): void {

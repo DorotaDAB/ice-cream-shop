@@ -2,13 +2,13 @@ import { OrderItem } from './orderItem.model';
 import { UserDTO } from './user.model';
 
 export class Order {
-  orderNumber: number;
+  orderId: number;
   userId: number;
   orderDate: Date;
   orderItem: OrderItem;
 
-  constructor(orderNumber: number, userId: number, orderDate: Date, orderItem: OrderItem) {
-    this.orderNumber = orderNumber;
+  constructor(orderId: number, userId: number, orderDate: Date, orderItem: OrderItem) {
+    this.orderId = orderId;
     this.userId = userId;
     this.orderDate = orderDate;
     this.orderItem = orderItem;
@@ -16,13 +16,13 @@ export class Order {
 }
 
 export class OrderDTO {
-  orderNumber: number;
+  orderId: number;
   userDTO: UserDTO;
   orderDate: Date;
   orderItem: OrderItem;
 
-  constructor(orderNumber: number, userDTO: UserDTO, orderDate: Date, orderItem: OrderItem) {
-    this.orderNumber = orderNumber;
+  constructor(orderId: number, userDTO: UserDTO, orderDate: Date, orderItem: OrderItem) {
+    this.orderId = orderId;
     this.userDTO = userDTO;
     this.orderDate = orderDate;
     this.orderItem = orderItem;

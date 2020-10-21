@@ -11,7 +11,7 @@ import * as _ from 'lodash';
 })
 
 export class DataBaseService {
-  private orderNumber = 1;
+  private orderId = 1;
   private userId = 1;
 
   private users: User[] = [
@@ -35,13 +35,13 @@ export class DataBaseService {
   ];
 
   private orders: Order[] = [
-    new Order(this.orderNumber++, 3, new Date(),
+    new Order(this.orderId++, 3, new Date(),
                 new OrderItem( new IcecreamType ('vanilla') , new Unit ('small', 250 ), 1)),
-    new Order(this.orderNumber++, 3, new Date(),
+    new Order(this.orderId++, 3, new Date(),
                 new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ), 1)),
-    new Order(this.orderNumber++, 2, new Date(),
+    new Order(this.orderId++, 2, new Date(),
                 new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ), 1)),
-    new Order(this.orderNumber++, 2, new Date(),
+    new Order(this.orderId++, 2, new Date(),
                 new OrderItem( new IcecreamType('chocolate') , new Unit('large', 1000 ), 1)),
   ];
 
@@ -51,9 +51,10 @@ export class DataBaseService {
     return this.users;
   }
 
-  getUsersDTO(): UserDTO[] {
-    return this.users.map(
-      user => new UserDTO (user.id, user.name)
+  getCustomersDTO(): UserDTO[] {
+    return this.users
+      .filter(user => user.type === 'customer')
+      .map(user => new UserDTO (user.id, user.name)
     );
   }
 
@@ -79,14 +80,14 @@ export class DataBaseService {
 
   getOrderDTO(): OrderDTO[] {
     return this.orders.map(
-        order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItem)
+        order => new OrderDTO(order.orderId, this.getUserDTO(order.userId), order.orderDate, order.orderItem)
       );
   }
 
   getCustomerOrderDTO(customerId: number): OrderDTO[] {
     return this.orders
       .filter(order => order.userId === customerId)
-      .map(order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItem));
+      .map(order => new OrderDTO(order.orderId, this.getUserDTO(order.userId), order.orderDate, order.orderItem));
   }
 
   getOrderItemDailySummaryDTO(selectedDate: Date): OrderItemDailySummaryDTO[] {
@@ -129,7 +130,7 @@ export class DataBaseService {
   }
 
   addOrder(newOrderDTO: OrderDTO): void {
-    const newOrder = new Order(this.orderNumber++, newOrderDTO.userDTO.id, new Date(), newOrderDTO.orderItem);
+    const newOrder = new Order(this.orderId++, newOrderDTO.userDTO.id, new Date(), newOrderDTO.orderItem);
     this.orders.push(newOrder);
   }
 }
