@@ -25,4 +25,7 @@ export class OrdersService {
     return this.dataBaseService.getOrderItemDailySummaryDTO(selectedDate);
   }
 
+  addOrder(newOrder: OrderDTO): void {
+    this.dataBaseService.addOrder(newOrder);
+  }
 }

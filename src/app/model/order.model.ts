@@ -5,13 +5,13 @@ export class Order {
   orderNumber: number;
   userId: number;
   orderDate: Date;
-  orderItems: OrderItem[];
+  orderItem: OrderItem;
 
-  constructor(orderNumber: number, userId: number, orderDate: Date, orderItems: OrderItem[]) {
+  constructor(orderNumber: number, userId: number, orderDate: Date, orderItem: OrderItem) {
     this.orderNumber = orderNumber;
     this.userId = userId;
     this.orderDate = orderDate;
-    this.orderItems = orderItems;
+    this.orderItem = orderItem;
   }
 }
 
@@ -19,13 +19,13 @@ export class OrderDTO {
   orderNumber: number;
   userDTO: UserDTO;
   orderDate: Date;
-  orderItems: OrderItem[];
+  orderItem: OrderItem;
 
-  constructor(orderNumber: number, userDTO: UserDTO, orderDate: Date, orderItems: OrderItem[]) {
+  constructor(orderNumber: number, userDTO: UserDTO, orderDate: Date, orderItem: OrderItem) {
     this.orderNumber = orderNumber;
     this.userDTO = userDTO;
     this.orderDate = orderDate;
-    this.orderItems = orderItems;
+    this.orderItem = orderItem;
   }
 }
 

@@ -9,15 +9,11 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
       <mat-panel-description>
-        Date: {{order.orderDate | date}}, Ordered items: {{order.orderItems.length}}
+        Date: {{order.orderDate | date}}
       </mat-panel-description>
-      <mat-panel-description>
-        <mat-list role="list">
-          <mat-list-item role="listitem" *ngFor="let item of items" class="order-details-item">
-            {{item.icecreamType.flavour}}: {{item.unit.name}} ({{item.unit.weightInGrams}} g.)
-          </mat-list-item>
-        </mat-list>
-      </mat-panel-description>
+      <p>
+        {{order.orderItem.icecreamType.flavour}}: {{order.orderItem.unit.name}} ({{order.orderItem.unit.weightInGrams}} g.) - quantity: {{order.orderItem.quantity}}
+      </p>
   </mat-expansion-panel>
 </mat-accordion>
 

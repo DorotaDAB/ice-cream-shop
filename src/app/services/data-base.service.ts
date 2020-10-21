@@ -11,10 +11,13 @@ import * as _ from 'lodash';
 })
 
 export class DataBaseService {
+  private orderNumber = 1;
+  private userId = 1;
+
   private users: User[] = [
-    new User(1, 'Anna', 'secret', 'owner', null, null),
-    new User(2, 'Zyta', 'secret', 'customer', new Unit('small', 250), [new IcecreamType('vanilla'), new IcecreamType('lemon')]),
-    new User(3, 'Jan', 'secret', 'customer', new Unit('medium', 500), [new IcecreamType('chocolate')]),
+    new User(this.userId++, 'Anna', 'secret', 'owner', null, null),
+    new User(this.userId++, 'Zyta', 'secret', 'customer', new Unit('small', 250), [new IcecreamType('vanilla'), new IcecreamType('lemon')]),
+    new User(this.userId++, 'Jan', 'secret', 'customer', new Unit('medium', 500), [new IcecreamType('chocolate')]),
   ];
 
   private types: string[] = [ 'customer', 'owner'];
@@ -31,17 +34,15 @@ export class DataBaseService {
     new Unit('big', 1000),
   ];
 
-  private orderNumber = 1;
-
   private orders: Order[] = [
-    new Order ( this.orderNumber++, 3, new Date(),
-                [new OrderItem( new IcecreamType ('vanilla') , new Unit ('small', 250 ))]),
-    new Order ( this.orderNumber++, 3, new Date(),
-                [new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
-    new Order ( this.orderNumber++, 2, new Date(),
-                [new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
-    new Order ( this.orderNumber++, 2, new Date(),
-                [new OrderItem( new IcecreamType('chocolate') , new Unit('large', 1000 ))]),
+    new Order(this.orderNumber++, 3, new Date(),
+                new OrderItem( new IcecreamType ('vanilla') , new Unit ('small', 250 ), 1)),
+    new Order(this.orderNumber++, 3, new Date(),
+                new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ), 1)),
+    new Order(this.orderNumber++, 2, new Date(),
+                new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ), 1)),
+    new Order(this.orderNumber++, 2, new Date(),
+                new OrderItem( new IcecreamType('chocolate') , new Unit('large', 1000 ), 1)),
   ];
 
   constructor() { }
@@ -78,14 +79,14 @@ export class DataBaseService {
 
   getOrderDTO(): OrderDTO[] {
     return this.orders.map(
-        order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItems)
+        order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItem)
       );
   }
 
   getCustomerOrderDTO(customerId: number): OrderDTO[] {
     return this.orders
       .filter(order => order.userId === customerId)
-      .map(order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItems));
+      .map(order => new OrderDTO(order.orderNumber, this.getUserDTO(order.userId), order.orderDate, order.orderItem));
   }
 
   getOrderItemDailySummaryDTO(selectedDate: Date): OrderItemDailySummaryDTO[] {
@@ -93,7 +94,7 @@ export class DataBaseService {
       .filter(order => order.orderDate.getFullYear() === selectedDate.getFullYear()
         && order.orderDate.getMonth() === selectedDate.getMonth()
         && order.orderDate.getDay() === selectedDate.getDay())
-      .map(order => order.orderItems)
+      .map(order => order.orderItem)
       .reduce((x, y) => x.concat(y), []);
 
     const groupedOrders: any = _.groupBy(initial, (item) => {
@@ -125,5 +126,10 @@ export class DataBaseService {
 
   addUnit(newUnit: Unit): void {
     this.units.push(newUnit);
+  }
+
+  addOrder(newOrderDTO: OrderDTO): void {
+    const newOrder = new Order(this.orderNumber++, newOrderDTO.userDTO.id, new Date(), newOrderDTO.orderItem);
+    this.orders.push(newOrder);
   }
 }

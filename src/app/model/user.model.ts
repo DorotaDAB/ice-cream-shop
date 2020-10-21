@@ -10,7 +10,7 @@ export class User {
   favoriteIcecream?: IcecreamType[];
 
   constructor(id: number, name: string, password: string, type: string, unit: Unit, favoriteIcecream: IcecreamType[]  ) {
-    this.id = id ? id : Math.floor(Math.random() * 100000);
+    this.id = id;
     this.name = name;
     this.password = password;
     this.type = type;

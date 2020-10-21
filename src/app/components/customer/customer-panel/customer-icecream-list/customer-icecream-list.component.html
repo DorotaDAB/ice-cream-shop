@@ -9,6 +9,8 @@
   <mat-list role="list" *ngIf="!favorite">
     <mat-list-item role="listitem" *ngFor="let icecreamType of customerDetails.favoriteIcecream">
       <app-customer-icecream
+        [orderUnit]="customerDetails.unit"
+        (orderAddition)="placeOrder($event)"
         [icecreamType]="icecreamType">
       </app-customer-icecream>
     </mat-list-item>
@@ -16,7 +18,9 @@
   <mat-list role="list" *ngIf="favorite">
     <mat-list-item role="listitem" *ngFor="let flavour of allFlavours">
       <app-customer-icecream
-        [flavour]="flavour">
+        [orderUnit]="customerDetails.unit"
+        [flavour]="flavour"
+        (orderAddition)="placeOrder($event)">
       </app-customer-icecream>
     </mat-list-item>
   </mat-list>

@@ -1,7 +1,13 @@
 <app-header></app-header>
 <mat-tab-group mat-align-tabs="start">
   <mat-tab label="My IceCream">
-    <app-customer-icecream-list [customerDetails]="customerDetails" [allFlavours]="allFlavours"></app-customer-icecream-list>
+    <app-customer-icecream-list
+      [customerDetails]="customerDetails"
+      [allFlavours]="allFlavours"
+      (order)="addOrderItem($event)">
+    </app-customer-icecream-list>
   </mat-tab>
-  <mat-tab label="My Orders"><app-customer-order-list [customerOrders]="customerOrders"></app-customer-order-list></mat-tab>
+  <mat-tab label="My Orders">
+    <app-customer-order-list [customerOrders]="customerOrders"></app-customer-order-list>
+  </mat-tab>
 </mat-tab-group>

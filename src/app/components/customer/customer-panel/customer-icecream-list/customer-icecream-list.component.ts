@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IcecreamType } from 'src/app/model/icecreamtype.model';
+import { OrderItem } from 'src/app/model/orderItem.model';
 import { CustomerDTO } from 'src/app/model/user.model';
 
 @Component({
@@ -10,9 +11,17 @@ import { CustomerDTO } from 'src/app/model/user.model';
 export class CustomerIcecreamListComponent implements OnInit {
   @Input() customerDetails: CustomerDTO;
   @Input() allFlavours: IcecreamType[];
+
+  @Output() order: EventEmitter<OrderItem> = new EventEmitter();
+
   favorite: boolean;
+  cart: IcecreamType[] = [];
 
   constructor() {
+  }
+
+  placeOrder(orderItem: OrderItem): void {
+    this.order.emit(orderItem);
   }
 
   ngOnInit(): void {

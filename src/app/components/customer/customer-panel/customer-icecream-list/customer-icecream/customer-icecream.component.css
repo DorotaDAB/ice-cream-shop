@@ -1,11 +1,26 @@
-.favorite {
+.order-addition  {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  width: 85vw;
+  justify-content: space-between;
   align-items: center;
 }
 
-p {
+.order-pannel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 5%;
+}
+
+.text  {
   margin: 0;
   padding-left: 5px;
 }
