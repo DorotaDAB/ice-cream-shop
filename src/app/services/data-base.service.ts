@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, UserDTO } from '../model/user.model';
+import { CustomerDTO, User, UserDTO } from '../model/user.model';
 import { IcecreamType } from '../model/icecreamtype.model';
 import { Unit } from '../model/unit.model';
 import { Order, OrderDTO, OrderItemDailySummaryDTO } from '../model/order.model';
@@ -12,35 +12,36 @@ import * as _ from 'lodash';
 
 export class DataBaseService {
   private users: User[] = [
-    new User (1, 'Anna', 'secret', 'owner'),
-    new User (2, 'Zyta', 'secret', 'customer'),
-    new User (3, 'Jan', 'secret', 'customer'),
+    new User(1, 'Anna', 'secret', 'owner', null, null),
+    new User(2, 'Zyta', 'secret', 'customer', new Unit('small', 250), [new IcecreamType('vanilla'), new IcecreamType('lemon')]),
+    new User(3, 'Jan', 'secret', 'customer', new Unit('medium', 500), [new IcecreamType('chocolate')]),
   ];
 
   private types: string[] = [ 'customer', 'owner'];
 
   private icecreamTypes: IcecreamType[] = [
-    new IcecreamType ('vanilla'),
-    new IcecreamType ('chocolate'),
+    new IcecreamType('vanilla'),
+    new IcecreamType('chocolate'),
+    new IcecreamType('lemon'),
   ];
 
   private units: Unit[] = [
-    new Unit ('small', 250),
-    new Unit ('medium', 500),
-    new Unit ('big', 1000),
+    new Unit('small', 250),
+    new Unit('medium', 500),
+    new Unit('big', 1000),
   ];
 
   private orderNumber = 1;
 
   private orders: Order[] = [
-    new Order ( this.orderNumber++, 1, new Date(),
-                [new OrderItem ( new IcecreamType ('vanilla') , new Unit ('small', 250 ))]),
-    new Order ( this.orderNumber++, 1, new Date(),
-                [new OrderItem ( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
+    new Order ( this.orderNumber++, 3, new Date(),
+                [new OrderItem( new IcecreamType ('vanilla') , new Unit ('small', 250 ))]),
+    new Order ( this.orderNumber++, 3, new Date(),
+                [new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
     new Order ( this.orderNumber++, 2, new Date(),
-                [new OrderItem ( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
+                [new OrderItem( new IcecreamType ('chocolate') , new Unit ('medium', 500 ))]),
     new Order ( this.orderNumber++, 2, new Date(),
-                [new OrderItem ( new IcecreamType ('chocolate') , new Unit ('large', 1000 ))]),
+                [new OrderItem( new IcecreamType('chocolate') , new Unit('large', 1000 ))]),
   ];
 
   constructor() { }
@@ -60,6 +61,14 @@ export class DataBaseService {
       .filter(user => userId === user.id)
       .map(
         user => new UserDTO (user.id, user.name)
+      )[0];
+  }
+
+  getCustomerDTO(userId: number): CustomerDTO {
+    return this.users
+      .filter(user => userId === user.id)
+      .map(
+        user => new CustomerDTO (user.id, user.name, user.unit, user.favoriteIcecream)
       )[0];
   }
 

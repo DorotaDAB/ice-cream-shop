@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, UserDTO } from '../model/user.model';
+import { CustomerDTO, User, UserDTO } from '../model/user.model';
 import { DataBaseService } from './data-base.service';
 
 @Injectable({
@@ -20,4 +20,9 @@ export class UsersService {
   getUsersDTO(): UserDTO[] {
     return this.dataBaseService.getUsersDTO();
   }
+
+  getCustomerDTO(userId: number): CustomerDTO {
+    return this.dataBaseService.getCustomerDTO(userId);
+  }
+
 }

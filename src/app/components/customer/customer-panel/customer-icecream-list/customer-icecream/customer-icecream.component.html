@@ -1,1 +1,7 @@
-<p>customer-icecream works!</p>
+  <div class="favorite" *ngIf="icecreamType">
+    <mat-icon color="accent">favorite</mat-icon><p>{{icecreamType.flavour}}</p>
+  </div>
+  <div class="not-favorite" *ngIf="!icecreamType">
+    <p>{{flavour.flavour}}</p>
+  </div>
+

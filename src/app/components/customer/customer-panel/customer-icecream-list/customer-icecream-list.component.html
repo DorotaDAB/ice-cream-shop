@@ -1,1 +1,25 @@
-<p>customer-icecream-list works!</p>
+<div class="icecream-list-container">
+  <h2>Hi {{customerDetails.name}}</h2>
+  <h3 *ngIf="customerDetails.favoriteIcecream">Your ordered Unit: {{customerDetails.unit.name}} ({{customerDetails.unit.weightInGrams}}g.)</h3>
+  <h3 *ngIf="!customerDetails.favoriteIcecream">You have no favorite Ice Cream Type yet.</h3>
+  <mat-slide-toggle [(ngModel)]="favorite">
+    <span *ngIf="!favorite">Show all Ice Cream types:</span>
+    <span *ngIf="favorite">Show favorite only:</span>
+  </mat-slide-toggle>
+  <mat-list role="list" *ngIf="!favorite">
+    <mat-list-item role="listitem" *ngFor="let icecreamType of customerDetails.favoriteIcecream">
+      <app-customer-icecream
+        [icecreamType]="icecreamType">
+      </app-customer-icecream>
+    </mat-list-item>
+  </mat-list>
+  <mat-list role="list" *ngIf="favorite">
+    <mat-list-item role="listitem" *ngFor="let flavour of allFlavours">
+      <app-customer-icecream
+        [flavour]="flavour">
+      </app-customer-icecream>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+

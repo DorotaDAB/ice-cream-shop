@@ -24,7 +24,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   onSubmit(f): void {
-    this.newUser = new User (null, f.value.userName, f.value.userPassword, f.value.userType);
+    this.newUser = new User (null, f.value.userName, f.value.userPassword, f.value.userType, null, null);
     this.userSubmit.emit(this.newUser);
   }
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IcecreamType } from 'src/app/model/icecreamtype.model';
+import { CustomerDTO } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-customer-icecream-list',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-icecream-list.component.css']
 })
 export class CustomerIcecreamListComponent implements OnInit {
+  @Input() customerDetails: CustomerDTO;
+  @Input() allFlavours: IcecreamType[];
+  favorite: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { OwnerPanelComponent } from './components/owner/owner-panel/owner-panel.component';
 import { CustomerListComponent } from './components/owner/owner-panel/customers/customer-list/customer-list.component';
@@ -98,7 +99,8 @@ import {
     MatIconModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
