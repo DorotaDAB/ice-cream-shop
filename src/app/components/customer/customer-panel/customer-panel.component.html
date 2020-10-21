@@ -3,5 +3,5 @@
   <mat-tab label="My IceCream">
     <app-customer-icecream-list [customerDetails]="customerDetails" [allFlavours]="allFlavours"></app-customer-icecream-list>
   </mat-tab>
-  <mat-tab label="My Orders"><app-customer-order-list></app-customer-order-list></mat-tab>
+  <mat-tab label="My Orders"><app-customer-order-list [customerOrders]="customerOrders"></app-customer-order-list></mat-tab>
 </mat-tab-group>

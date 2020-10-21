@@ -5,11 +5,11 @@
         Customer: {{order.userDTO.name}}
       </mat-panel-title>
       <mat-panel-description>
-        Ordered items: {{order.orderItems.length}}, Date: {{order.orderDate | date}}
+        Order number: {{order.orderNumber}}
       </mat-panel-description>
     </mat-expansion-panel-header>
       <mat-panel-description>
-        Order number: {{order.orderNumber}}
+        Date: {{order.orderDate | date}}, Ordered items: {{order.orderItems.length}}
       </mat-panel-description>
       <mat-panel-description>
         <mat-list role="list">

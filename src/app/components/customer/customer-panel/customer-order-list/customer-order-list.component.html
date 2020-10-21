@@ -1,1 +1,7 @@
-<p>customer-order-list works!</p>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let order of customerOrders">
+    <app-customer-order
+      [order]="order">
+    </app-customer-order>
+  </mat-list-item>
+</mat-list>
