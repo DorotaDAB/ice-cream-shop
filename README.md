@@ -1,6 +1,37 @@
 # IceCreamShop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+This is a SPA project allowing Ice Cream Shop owner to manage customers and orders.
+
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+
+
+## Features available ##
+* Two paths: Owner and Customer,
+* Owner: 
+  * create user,
+  * display customer list,
+  * create and display offer,
+  * display orders:
+    * all orders,
+    * order details by customer,
+    * orders summary by date,
+* Customer: 
+  * display offer,
+    * display favourite list,
+    * display all offer,
+  * place order (with unit assigned),
+  * preview customer orders,
+
+
+## Features planned ##
+* Login: dynamic user access to dedicated panel,
+* Finish CRUD operations for users and offers (currently create is available)
+* Favourite Icecream and Units management (currently hard-coded)
+<br />
+<br />
+------------------
+<br />
+
 
 ## Development server
 
