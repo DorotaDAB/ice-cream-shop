@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderDTO } from 'src/app/model/order.model';
-import { UserDTO } from 'src/app/model/user.model';
+import { UserSimpleDTO } from 'src/app/model/user.model';
 import { OrdersService } from 'src/app/services/orders.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -11,8 +11,8 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class OrdersComponent implements OnInit {
   orders: OrderDTO[] = [];
-  customers: UserDTO[] = [];
-  selectedCustomer: UserDTO;
+  customers: UserSimpleDTO[] = [];
+  selectedCustomer: UserSimpleDTO;
   selectedCustomerOrders: OrderDTO[];
   summaryView = false;
 
@@ -21,7 +21,7 @@ export class OrdersComponent implements OnInit {
     this.getCustomers(userService);
   }
 
-  selectCustomer(value: UserDTO): void {
+  selectCustomer(value: UserSimpleDTO): void {
     this.selectedCustomer = value;
     if (value) {
       this.selectedCustomerOrders = this.ordersService

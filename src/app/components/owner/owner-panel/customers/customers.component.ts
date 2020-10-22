@@ -12,7 +12,8 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 export class CustomersComponent implements OnInit {
   customers: User[] = [];
 
-  constructor( public dialog: MatDialog, public usersService: UsersService) {
+  constructor(private dialog: MatDialog,
+              private usersService: UsersService) {
     this.getSortedUsers(usersService);
   }
 

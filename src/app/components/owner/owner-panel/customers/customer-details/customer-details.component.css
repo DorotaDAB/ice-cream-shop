@@ -15,3 +15,7 @@
   justify-content: space-between;
   margin-top: 10px;
 }
+
+.mat-form-field {
+  margin-top: 5%;
+}

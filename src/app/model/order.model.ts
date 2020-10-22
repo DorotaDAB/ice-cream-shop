@@ -1,5 +1,5 @@
 import { OrderItem } from './orderItem.model';
-import { UserDTO } from './user.model';
+import { UserSimpleDTO } from './user.model';
 
 export class Order {
   orderId: number;
@@ -17,13 +17,13 @@ export class Order {
 
 export class OrderDTO {
   orderId: number;
-  userDTO: UserDTO;
+  userSimpleDTO: UserSimpleDTO;
   orderDate: Date;
   orderItem: OrderItem;
 
-  constructor(orderId: number, userDTO: UserDTO, orderDate: Date, orderItem: OrderItem) {
+  constructor(orderId: number, userSimpleDTO: UserSimpleDTO, orderDate: Date, orderItem: OrderItem) {
     this.orderId = orderId;
-    this.userDTO = userDTO;
+    this.userSimpleDTO = userSimpleDTO;
     this.orderDate = orderDate;
     this.orderItem = orderItem;
   }

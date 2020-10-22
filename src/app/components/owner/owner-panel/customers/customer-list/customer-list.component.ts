@@ -7,7 +7,7 @@ import { User } from 'src/app/model/user.model';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  @Input() customers: User[] = [];
+  @Input() customers: User[];
 
   constructor() { }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CustomerDTO, User, UserDTO } from '../model/user.model';
+import { CustomerDTO, User, UserDTO, UserSimpleDTO } from '../model/user.model';
 import { IcecreamType } from '../model/icecreamtype.model';
 import { Unit } from '../model/unit.model';
 import { Order, OrderDTO, OrderItemDailySummaryDTO } from '../model/order.model';
@@ -51,18 +51,18 @@ export class DataBaseService {
     return this.users;
   }
 
-  getCustomersDTO(): UserDTO[] {
+  getCustomersDTO(): UserSimpleDTO[] {
     return this.users
       .filter(user => user.type === 'customer')
-      .map(user => new UserDTO (user.id, user.name)
+      .map(user => new UserSimpleDTO (user.id, user.name)
     );
   }
 
-  getUserDTO(userId: number): UserDTO {
+  getUserSimpleDTO(userId: number): UserSimpleDTO {
     return this.users
       .filter(user => userId === user.id)
       .map(
-        user => new UserDTO (user.id, user.name)
+        user => new UserSimpleDTO (user.id, user.name)
       )[0];
   }
 
@@ -80,14 +80,14 @@ export class DataBaseService {
 
   getOrderDTO(): OrderDTO[] {
     return this.orders.map(
-        order => new OrderDTO(order.orderId, this.getUserDTO(order.userId), order.orderDate, order.orderItem)
+        order => new OrderDTO(order.orderId, this.getUserSimpleDTO(order.userId), order.orderDate, order.orderItem)
       );
   }
 
   getCustomerOrderDTO(customerId: number): OrderDTO[] {
     return this.orders
       .filter(order => order.userId === customerId)
-      .map(order => new OrderDTO(order.orderId, this.getUserDTO(order.userId), order.orderDate, order.orderItem));
+      .map(order => new OrderDTO(order.orderId, this.getUserSimpleDTO(order.userId), order.orderDate, order.orderItem));
   }
 
   getOrderItemDailySummaryDTO(selectedDate: Date): OrderItemDailySummaryDTO[] {
@@ -117,8 +117,8 @@ export class DataBaseService {
     return this.icecreamTypes;
   }
 
-  addUser(newUser: User): void {
-    this.users.push(newUser);
+  addUser(newUser: UserDTO): void {
+    this.users.push(new User(this.orderId++, newUser.name, newUser.password, newUser.type, newUser.unit, null));
   }
 
   addIcecreamType(newIcecreamType: IcecreamType): void {
@@ -130,7 +130,7 @@ export class DataBaseService {
   }
 
   addOrder(newOrderDTO: OrderDTO): void {
-    const newOrder = new Order(this.orderId++, newOrderDTO.userDTO.id, new Date(), newOrderDTO.orderItem);
+    const newOrder = new Order(this.orderId++, newOrderDTO.userSimpleDTO.id, new Date(), newOrderDTO.orderItem);
     this.orders.push(newOrder);
   }
 }

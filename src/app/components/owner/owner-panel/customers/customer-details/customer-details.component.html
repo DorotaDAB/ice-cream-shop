@@ -34,6 +34,15 @@
         ngModel
         name="userType">{{type}}</mat-radio-button>
     </mat-radio-group>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose unit to order</mat-label>
+      <mat-select (valueChange)="selectUnit($event)">
+        <mat-option [value]="null">*None*</mat-option>
+        <mat-option *ngFor="let unit of units" [value]="unit">
+          {{unit.name}} ({{unit.weightInGrams}}g.)
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="button-container">
       <button mat-flat-button color="primary" type="submit" [disabled]="!f.valid" mat-dialog-close>Add</button>
     </div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OrderDTO } from 'src/app/model/order.model';
-import { UserDTO } from 'src/app/model/user.model';
+import { UserSimpleDTO } from 'src/app/model/user.model';
 import { OrdersService } from 'src/app/services/orders.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { OrdersService } from 'src/app/services/orders.service';
   styleUrls: ['./customer-order-list-item.component.css']
 })
 export class CustomerOrderListItemComponent implements OnInit {
-  @Input() selectedCustomer: UserDTO;
+  @Input() selectedCustomer: UserSimpleDTO;
   @Input() selectedCustomerOrders: OrderDTO[];
 
   constructor(private ordersService: OrdersService) {

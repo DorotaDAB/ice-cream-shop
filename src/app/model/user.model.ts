@@ -19,13 +19,27 @@ export class User {
   }
 }
 
-export class UserDTO {
+export class UserSimpleDTO {
   id: number;
   name: string;
 
   constructor(id: number, name: string) {
     this.id = id;
     this.name = name;
+  }
+}
+
+export class UserDTO {
+  name: string;
+  password: string;
+  type: string;
+  unit?: Unit;
+
+  constructor(name: string, password: string, type: string, unit: Unit) {
+    this.name = name;
+    this.password = password;
+    this.type = type;
+    this.unit = unit;
   }
 }
 

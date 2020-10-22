@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IcecreamType } from 'src/app/model/icecreamtype.model';
 import { OrderDTO } from 'src/app/model/order.model';
 import { OrderItem } from 'src/app/model/orderItem.model';
-import { CustomerDTO, UserDTO } from 'src/app/model/user.model';
+import { CustomerDTO, UserSimpleDTO } from 'src/app/model/user.model';
 import { DataBaseService } from 'src/app/services/data-base.service';
 import { OfferService } from 'src/app/services/offer.service';
 import { OrdersService } from 'src/app/services/orders.service';
@@ -41,7 +41,7 @@ export class CustomerPanelComponent implements OnInit {
   }
 
   addOrderItem(orderItem: OrderItem): void {
-    const newOrder: OrderDTO = new OrderDTO(null, new UserDTO(this.customerDetails.id, this.customerDetails.name), null, orderItem);
+    const newOrder: OrderDTO = new OrderDTO(null, new UserSimpleDTO(this.customerDetails.id, this.customerDetails.name), null, orderItem);
     this.ordersService.addOrder(newOrder);
     this.getCustomerOrders();
   }
